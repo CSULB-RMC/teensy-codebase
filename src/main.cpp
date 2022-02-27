@@ -1,32 +1,24 @@
 #include <Arduino.h>
 
-#define LED_60Hz 2
-#define LED_Base 1
-
 int pwm_signal = 0;
 
 void setup() {
-  
-  // Set the pins to OUTPUT
-    pinMode(LED_60Hz, OUTPUT);
-    pinMode(LED_Base, OUTPUT);
-
-  // Set pin2 LED_60Hz to 60 Hz frequency
-    analogWriteFrequency(LED_60Hz, 60);
+  Serial.begin(9600);
 }
 
 void loop() {    
-  // Will start with a duty cycle of 0 and ramp up to 100
-    for(int i = 0; i <= 100; i++){
 
-        // Maps the corresponding signal to the resolution of the pin
-        pwm_signal = map(i, 0, 100, 0, 255);
+  // Map out the signals
+  for(int i = 500; i <= 2500; i += 100){
 
-        // Output the translated duty cycle
-        analogWrite(LED_60Hz, pwm_signal);
-        analogWrite(LED_Base, pwm_signal);
+      // So essentially given that a 100hz frequency has a period of 10,000 micro-Seconds
+      // To reach the minimum allowable range for the pulse duration (500 <= p <= 2500)
+      // Since 10,000 micro-Seconds divided by 256 divisions (resolution of PWM signal) 
+      // equates to approx 39 divisions, You can find what division the 500 micro-second duration
+      // is at by dividing 500 with 39 divisions. Hence, at the 13th division is a valid input
+      // to drive the spark max
+      pwm_signal = map(i, 500, 2500, 13, 255);
+      Serial.println(pwm_signal);
+  }
 
-        // Wait for 1/2 second
-        delay(500);
-    }
 }
