@@ -4,8 +4,6 @@
 ___
 This class will contain methods that will control the drivetrain. 
 
-<br>
-
 ____
 **Basic movements:**
 ____
@@ -41,5 +39,33 @@ The implementation of this is only possible with the usage of a rotary encoder s
 <br>
 
 ___
-**Hardware Interfaced:**
+**Hardware Interface:**
 ___
+
+
+**Spark MAX controller:**
+
+A PWM signal shall be passed to the controller from the Teensy to the motor controller. The documentation and boundaries of the signals (figure 1) that are to be sent to the the motor controller. 
+
+
+![Drivetrain Pulse Map](./Images/Drivetrain_PWM_Pulse.JPG)
+
+<p style="font-size:11px;text-align:center;font-weight:bold">
+<i>
+Figure 1 (PWM Map of Spark Max)
+</i>
+</p>
+
+Pins utilized in Teensy:
+- 8 (Drivetrain Left)
+- 9 (Drivetrain Right)
+
+<br>
+
+**Spark MAX Encoders:**
+
+The encoders are alongside the NEO brushless motors, hence to access the data from the motors, we will be splicing the wires in order to ensure that the motor controller gets the required input for the encoder and the Teensy.
+
+**Teensy 4.1:**
+
+The Teensy will output a signal of 100 hz to the Spark Max. 
