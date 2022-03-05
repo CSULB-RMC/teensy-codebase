@@ -11,7 +11,12 @@ Drivetrain::Drivetrain(int pin_num){
 
 }
 
-void Drivetrain::set_drivetrain_pin(int pin){}
+// Set the pin of the drivetrain PWM
+void Drivetrain::set_drivetrain_pin(int pin){
+
+    pinMode(pin, OUTPUT);
+
+}
 
 
 void Drivetrain::set_speed(int speed){}
