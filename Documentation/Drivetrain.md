@@ -45,7 +45,7 @@ ___
 
 **Spark MAX controller:**
 
-A PWM signal shall be passed to the controller from the Teensy to the motor controller. The documentation and boundaries of the signals (figure 1) that are to be sent to the the motor controller. 
+A PWM signal shall be passed to the controller from the Teensy to the motor controller. The documentation and boundaries of the signals (figure 1) that are to be sent to the the motor controller. Division math will be inputted in later.
 
 
 ![Drivetrain Pulse Map](./Images/Drivetrain_PWM_Pulse.JPG)
