@@ -43,3 +43,11 @@ ____
 
 Linear Actuators have no need to be adjusted for their speed (they're pretty much slow based on Maurice's experience with them)
 
+I would think the only things that need speed adjustment would be the digging and horizontal extension.
+
+
+____
+**Hardware Interface:**
+____
+
+
