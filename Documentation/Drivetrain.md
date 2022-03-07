@@ -68,4 +68,4 @@ The encoders are alongside the NEO brushless motors, hence to access the data fr
 
 **Teensy 4.1:**
 
-The Teensy will output a signal of 100 hz to the Spark Max. 
+The Teensy will output a signal of 100 hz to the Spark Max. Maurice tysm for the extension.
