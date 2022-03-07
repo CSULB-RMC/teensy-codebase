@@ -13,12 +13,14 @@ private:
               min_backward = 25,
               max_backward = 37;
 
-    // Pin location of drivetrain motor
-    int drivetrain_pin = 0;
+    // Drivetrain stats
+    int drivetrain_pin = 0,
+        current_speed = 0,
+        PWM_speed_div = 0,
+        current_direction = 0;
 
     // Setter functions
     void set_drivetrain_pin(int);
-    void set_speed(int);
 
     // Drivetrain driver
     void drivetrain_forward(int);
