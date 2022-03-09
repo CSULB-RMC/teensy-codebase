@@ -38,6 +38,9 @@ public:
     // Proportional forwards/backwards w/ setting speed
     void move(int, int);
 
+    // Stop the motors
+    void stop();
+
 };
 
 #endif

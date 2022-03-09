@@ -81,3 +81,10 @@ void SparkMax::move(int direction, int speed_percent){
     }
 
 }
+
+// Stops the motors
+void SparkMax::stop(){
+
+    // Sets the motors to neutral mode
+    spark_neutral();
+}
