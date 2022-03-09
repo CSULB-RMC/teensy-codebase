@@ -1,7 +1,7 @@
-#ifndef DRIVETRAIN_H
-#define DRIVETRAIN_H
+#ifndef SPARKMAX_H
+#define SPARKMAX_H
 
-class Drivetrain{
+class SparkMax{
 
 private:
 
@@ -14,18 +14,18 @@ private:
               max_backward = 37;
 
     // Drivetrain stats
-    int drivetrain_pin = 0,
+    int motor_PWM_pin = 0,
         current_speed = 0,
         PWM_speed_div = 0,
         current_direction = 0;
 
     // Setter functions
-    void set_drivetrain_pin(int);
+    void set_motor_pin(int);
 
     // Drivetrain driver
-    void drivetrain_forward(int);
-    void drivetrain_backwards(int);
-    void drivetrain_neutral();
+    void spark_forward(int);
+    void spark_backwards(int);
+    void spark_neutral();
 
     // Future implementations
     // Read encoder (to assist with finding speed)
@@ -33,7 +33,7 @@ private:
 public:
 
     // Class instantiation (set the pin of the drivetrain)
-    Drivetrain(int);
+    SparkMax(int);
 
     // Proportional forwards/backwards w/ setting speed
     void move(int, int);
