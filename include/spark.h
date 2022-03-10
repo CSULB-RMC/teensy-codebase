@@ -12,12 +12,15 @@ private:
 
 public:
     // Constructor, parameter for pin number
-    Spark(int);
+    Spark(int=0);
 
     // Motor methods
     void spark_forward();
     void spark_backward();
     void spark_neutral();
+
+    // Setter for motor pin number
+    void set_motor_pin(int);
 };
 
 #endif

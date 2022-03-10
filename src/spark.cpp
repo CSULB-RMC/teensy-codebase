@@ -4,7 +4,7 @@
 Spark::Spark(int pin_num){
     
     // Set the pin number of the motor
-    servo.attach(pin_num);
+    set_motor_pin(pin_num);
 
     // Set the speed of the motor to neutral
     spark_neutral();
@@ -21,4 +21,8 @@ void Spark::spark_backward() {
 
 void Spark::spark_neutral() {
     servo.write(90);
+}
+
+void Spark::set_motor_pin(int pin_num) {
+    servo.attach(pin_num);
 }
