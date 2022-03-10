@@ -19,9 +19,6 @@ private:
         PWM_speed_div = 0,
         current_direction = 0;
 
-    // Setter functions
-    void set_motor_pin(int);
-
     // Drivetrain driver
     void spark_forward(int);
     void spark_backwards(int);
@@ -33,13 +30,16 @@ private:
 public:
 
     // Class instantiation (set the pin of the drivetrain)
-    SparkMax(int);
+    SparkMax(int=0);
 
     // Proportional forwards/backwards w/ setting speed
     void move(int, int);
 
     // Stop the motors
     void stop();
+
+    // Setter functions
+    void set_motor_pin(int);
 
 };
 
