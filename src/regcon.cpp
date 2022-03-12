@@ -11,51 +11,48 @@ RegCon::RegCon(int lin_left_pin1, int lin_left_pin2, int lin_right_pin1, int lin
 
 // Sets linear actuator inputs based on table in bucket ladder documentation
 void RegCon::linear_up() {
-    set_lin_inputs(1, 0, 1, 0);
+    // Send a command to board to move "forwards" (in-context with board)
+    left_linear.DRV8871_move(1);
+    right_linear.DRV8871_move(1);
 }
 
 void RegCon::linear_down() {
-    set_lin_inputs(0, 1, 0, 1);
+    // Send a command to board to move "backwards" (in-context with board)
+    left_linear.DRV8871_move(0);
+    right_linear.DRV8871_move(0);
 }
     
 void RegCon::linear_stop() {
-    set_lin_inputs(1, 1, 1, 1);
+    // Send a command to board to stop (in-context with board)
+    left_linear.DRV8871_stop();
+    right_linear.DRV8871_stop();
 }
 
 // Sets linear actuator pins
 void RegCon::set_lin_pins(int l_pin1, int l_pin2, int r_pin1, int r_pin2) {
-    pinMode(l_pin1, OUTPUT);
-    pinMode(l_pin2, OUTPUT);
-    pinMode(r_pin1, OUTPUT);
-    pinMode(r_pin2, OUTPUT);
+    left_linear.set_breakout_pins(l_pin1, l_pin2);
+    right_linear.set_breakout_pins(r_pin1, r_pin2);
 }
 
-// Sets linear actuator inputs
-void RegCon::set_lin_inputs(int l_input1, int l_input2, int r_input1, int r_input2) {
-    digitalWrite(lin_left1, l_input1);
-    digitalWrite(lin_left2, l_input2);
-    digitalWrite(lin_right1, r_input1);
-    digitalWrite(lin_right2, r_input2);
-}
 
 // Conveyor belt moves forward/backward/stops by calling the equivalent method on both sparks
 void RegCon::conveyor_forward() {
-    left_spark.spark_forward();
-    right_spark.spark_forward();
+    left_conveyer.move(1);
+    right_conveyer.move(1);
 }
 
 void RegCon::conveyor_backward() {
-    left_spark.spark_backward();
-    right_spark.spark_backward();
+    left_conveyer.move(0);
+    right_conveyer.move(0);
 }
 
 void RegCon::conveyor_stop() {
-    left_spark.spark_neutral();
-    right_spark.spark_neutral();
+    left_conveyer.stop();
+    right_conveyer.stop();
 }
 
 // Sets pins for sparks
 void RegCon::set_spark_pins(int l_pin, int r_pin) {
-    left_spark.set_motor_pin(l_pin);
-    right_spark.set_motor_pin(r_pin);
+    left_conveyer.set_motor_pin(l_pin);
+    right_conveyer.set_motor_pin(r_pin);
 }

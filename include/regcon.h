@@ -1,24 +1,23 @@
 #ifndef REGCON_H
 #define REGCON_H
 
-#include <Servo.h>
 #include "spark.h"
+#include "DRV8871.h"
 
 class RegCon {
 private:
-    int lin_left1;
-    int lin_left2;
-    int lin_right1;
-    int lin_right2;
-
     // Spark objects for bag motors for conveyor
-    Spark left_spark;
-    Spark right_spark;
+    Spark left_conveyer;
+    Spark right_conveyer;
+
+    // DRV8871 breakout board objects for linear actuators
+    DRV8871 left_linear;
+    DRV8871 right_linear;
     
 public:
     // Constructor
     // Parameters are for spark pins, not thinking bout liner actuators for now
-    RegCon(int, int, int, int, int, int); 
+    RegCon(int=0, int=0, int=0, int=0, int=0, int=0); 
 
     // Linear actuator methods, uses two linear actuators
     void linear_up();
@@ -27,7 +26,6 @@ public:
 
     // Setter methods for linear actuator
     void set_lin_pins(int, int, int, int);
-    void set_lin_inputs(int, int, int, int);
 
     // Conveyor methods, uses two bag motors
     void conveyor_forward();
