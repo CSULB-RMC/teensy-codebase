@@ -7,16 +7,12 @@ class DRV8871{
     
     // Pin digital direction output pins for linear actuators
     // Default set to 1 upon constructor (Set motors to neutral)
-        int lin_left1_dir = 1,
-            lin_left2_dir = 1,
-            lin_right1_dir = 1,
-            lin_right2_dir = 1;
+        int lin1_dir = 1,
+            lin2_dir = 1;
 
     // Pin locations for Actuators
-        int lin_left1_pin,
-            lin_left2_pin,
-            lin_right1_pin,
-            lin_right2_pin;
+        int lin1_pin,
+            lin2_pin;
 
     // Breakout board methods 
         void forward();
@@ -24,9 +20,12 @@ class DRV8871{
         void stop();
 
     // Sets the output direction
-        void set_output(int, int, int, int);
+        void set_output(int, int);
 
     public:
+
+    // Constructor (Initializes pins)
+        DRV8871(int=0, int=0);
 
     // Movement methods (Assume speed will be constant)
     // FUTURE TODO (Adjust speed if needed for Lin. Act)
@@ -34,7 +33,7 @@ class DRV8871{
         void DRV8871_stop();
 
     // Set linear actuator pins
-        void set_linear_pins(int, int, int, int);
+        void set_breakout_pins(int, int);
 
 };
 
