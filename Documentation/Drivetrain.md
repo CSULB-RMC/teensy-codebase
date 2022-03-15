@@ -1,8 +1,52 @@
 # Drivetrain Class
-
-**Purpose:**
 ___
+**Purpose:**
 This class will contain methods that will control the drivetrain. 
+
+___
+## Hardware ##
+___
+<u>Neo Brushless Motor:</u>
+* Quantity (2)
+* Link (https://www.revrobotics.com/rev-21-1650/)
+* Relevant Documentation:
+    - Encoder Pin-Out (https://docs.revrobotics.com/sparkmax/feature-description/encoder-port)
+    - Motor Connections (https://docs.revrobotics.com/sparkmax/feature-description/power-and-motor-connections)
+
+<center>
+<img src="./Images/Neo_Motor.JPG" alt="Neo Motor" width="250"/>
+</center>
+<br>
+
+<u>SPARK Max Motor Controller:</u>
+* Quantity (2)
+* Link (https://www.revrobotics.com/rev-11-2158/)
+* Relevant Documentation:
+    - PWM Mapping (https://docs.revrobotics.com/sparkmax/operating-modes/control-interfaces)
+    - Motor Connection (https://docs.revrobotics.com/sparkmax/feature-description/power-and-motor-connections)
+
+
+<center>
+<img src="./Images/Spark_Max.JPG" alt="Spark Max" width="250"/>
+</center>
+
+<br>
+
+___
+## Connection(s) ##
+___
+
+<u>Motor PWM:</u>
+![PWM Inputs](Images/Drivetrain_PWM_INPUT_PORTS.JPG)
+
+<u>Motor Encoder:</u>
+![PWM Right Inputs](Images/Drivetrain_EncoderR_Input_PORTS.JPG)
+![PWM Left Inputs](Images/Drivetrain_EncoderL_Input_PORTS.JPG)
+
+**Optional:**
+<u>Motor Temperature:</u>
+![Temperature](Images/Drivetrain_Temperature_Input_PORTS.JPG)
+<br>
 
 ____
 **Basic movements:**
@@ -35,6 +79,7 @@ Due to the fact that not all DC motors will rotate at the same constant speed, a
 
 The implementation of this is only possible with the usage of a rotary encoder sensor to calculate the rotational speed in which will adjust the desired speed with the actual adjusted speed.  
 
+* This feature will be implemented once interfacing with the 
 
 <br>
 
