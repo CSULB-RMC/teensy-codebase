@@ -48,6 +48,8 @@ ___
 ![Temperature](Images/Drivetrain_Temperature_Input_PORTS.JPG)
 <br>
 
+
+
 ____
 **Basic movements:**
 ____
@@ -113,4 +115,4 @@ The encoders are alongside the NEO brushless motors, hence to access the data fr
 
 **Teensy 4.1:**
 
-The Teensy will output a signal of 100 hz to the Spark Max. Maurice tysm for the extension.
+The Teensy will output a signal of 100 hz to the Spark Max. Based on the commands inputted, the Teensy will output a PWM frequency.
