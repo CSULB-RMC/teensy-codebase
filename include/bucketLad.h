@@ -16,9 +16,33 @@ class BucketLadder{
         Spark bag1, bag2;
 
     public:
+        // Constructor
+        BucketLadder(int=0, int=0, int=0, int=0, int=0, int=0, int=0);
 
+        // Linear actuator methods
+        void linear_up();
+        void linear_down();
+        void linear_stop();
 
-};
+        // Set Linear actuator pins
+        void set_lin_pins(int, int, int, int);
+
+        // Digging method (BAG motors)
+        void bucket_forward();
+        void bucket_backward();
+        void bucket_stop();
+
+        // Set BAG motor pins
+        void set_spark_pins(int, int);
+
+        // Extension/Retraction (Horizontal)
+        void cim_forward();
+        void cim_backward();
+        void cim_stop();
+        
+        // Set CIM motor pin
+        void set_cim_pins(int);
+};  
 
 
 #endif
