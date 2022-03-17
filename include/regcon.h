@@ -24,16 +24,10 @@ class RegCon {
         void linear_down();
         void linear_stop();
 
-        // Setter methods for linear actuator
-        void set_lin_pins(int, int, int, int);
-
         // Conveyor methods, uses two bag motors
         void conveyor_forward();
         void conveyor_backward();
         void conveyor_stop();
-
-        // Setter methods for conveyor sparks
-        void set_spark_pins(int, int);
 };
 
 #endif
