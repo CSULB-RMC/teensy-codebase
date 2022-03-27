@@ -1,9 +1,11 @@
-#ifndef LBL_CONFIG_h
+#ifndef LBL_CONFIG_H
 #define LBL_CONFIG_H
 
 #include "SD_logger.h"
 
-#define SD_DEBUG
+//CONFIG OPTIONS: COMMENT TO DISABLE, UNCOMMENT TO ENABLE
+#define SD_DEBUG //log errors to SD card. Disabled logs errors to Serial3
+#define USING_MICROROS //compile the various classes with support for microros (will fail if microros is not an included library)
 
 #ifdef SD_DEBUG
 #define printFunc(text)       SD_log(text)
