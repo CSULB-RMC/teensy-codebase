@@ -24,6 +24,16 @@ void setup() {
   #endif
 
   Drivetrain dt(0, 1); //TODO: replace these with the actual pins, this is just a test
+  #ifdef USING_MICROROS
+  if (dt.getError())
+    printFuncln("Error trying to create Drivetrain. Will be non-functional/crash.");
+  #endif
+
+  #ifndef USING_MICROROS
+
+  //ADD NON MICROROS TEST SETUP CODE HERE
+
+  #endif
 
 }
 

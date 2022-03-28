@@ -16,6 +16,8 @@ class Drivetrain{
         SparkMax right_motor;
 
         #ifdef USING_MICROROS
+        bool microros_error;
+
         rcl_subscription_t dt_left_sub;
         rcl_subscription_t dt_right_sub;
 
@@ -33,6 +35,10 @@ class Drivetrain{
         void move_left(int=0);
         void move_right(int=0);
         void move_neutral(int=0);
+
+        #ifdef USING_MICROROS
+        bool getError();
+        #endif
 };
 
 #endif
