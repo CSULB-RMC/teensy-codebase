@@ -24,9 +24,13 @@ void setup() {
   #endif
 
   Drivetrain dt(0, 1); //TODO: replace these with the actual pins, this is just a test
+  BucketLadder bl(2, 3, 4, 5, 6, 7, 8); //TODO: replace these with the actual pins
+
   #ifdef USING_MICROROS
   if (dt.getError())
     printFuncln("Error trying to create Drivetrain. Will be non-functional/crash.");
+  if (bl.getError())
+    printFuncln("Error trying to create Bucketladder. Will be non-functional/crash.");  
   #endif
 
   #ifndef USING_MICROROS

@@ -4,6 +4,13 @@
 #include "spark.h"
 #include "DRV8871.h"
 
+#include "config.h"
+
+#ifdef USING_MICROROS
+#include "microros_setup.h"
+#include <std_msgs/msg/int8.h>
+#endif
+
 class BucketLadder{
 
     private:
@@ -14,6 +21,22 @@ class BucketLadder{
         // Motor instantiation
         Spark mini_CIM;
         Spark bag1, bag2;
+
+        #ifdef USING_MICROROS
+        bool microros_error;
+
+        rcl_subscription_t bl_lift_sub;
+        rcl_subscription_t bl_tele_sub;
+        rcl_subscription_t bl_dig_sub;
+
+        std_msgs__msg__Int8 bl_lift_msg;
+        std_msgs__msg__Int8 bl_tele_msg;
+        std_msgs__msg__Int8 bl_dig_msg;
+
+        static void bl_lift_callback(const void *msgin, void * context);
+        static void bl_tele_callback(const void *msgin, void * context);
+        static void bl_dig_callback(const void *msgin, void * context);
+        #endif
 
     public:
         // Constructor
@@ -33,6 +56,10 @@ class BucketLadder{
         void cim_forward();
         void cim_backward();
         void cim_stop();
+
+        #ifdef USING_MICROROS
+        bool getError();
+        #endif
 };  
 
 
