@@ -19,14 +19,11 @@ void setup() {
     printFuncln("ros setup failed... restarting init process in 2 seconds.");
     delay(2000);
   }
-  
-  printFuncln("Microros init successful!");
-  #endif
 
   Drivetrain dt(0, 1); //TODO: replace these with the actual pins, this is just a test
   BucketLadder bl(2, 3, 4, 5, 6, 7, 8); //TODO: replace these with the actual pins
+  RegCon rc(9, 10, 11, 12, 13, 14); //TODO: replace with actual pins
 
-  #ifdef USING_MICROROS
   if (dt.getError())
     printFuncln("Error trying to create Drivetrain. Will be non-functional/crash.");
   if (bl.getError())
