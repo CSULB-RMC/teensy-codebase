@@ -4,6 +4,13 @@
 #include "spark.h"
 #include "DRV8871.h"
 
+#include "config.h"
+
+#ifdef USING_MICROROS
+#include "microros_setup.h"
+#include <std_msgs/msg/int8.h>
+#endif
+
 class RegCon {
     private:
         // Spark objects for bag motors for conveyor
@@ -13,6 +20,16 @@ class RegCon {
         // DRV8871 breakout board objects for linear actuators
         DRV8871 left_linear;
         DRV8871 right_linear;
+
+        #ifdef USING_MICROROS
+        bool microros_error;
+
+        rcl_subscription_t rc_sub;
+
+        std_msgs__msg__Int8 rc_msg;
+
+        static void rc_callback(const void *msgin, void * context);
+        #endif
         
     public:
         // Constructor
@@ -28,6 +45,10 @@ class RegCon {
         void conveyor_forward();
         void conveyor_backward();
         void conveyor_stop();
+
+        #ifdef USING_MICROROS
+        bool getError();
+        #endif
 };
 
 #endif
