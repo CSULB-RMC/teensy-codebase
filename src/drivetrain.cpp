@@ -9,11 +9,11 @@ Drivetrain::Drivetrain(int left_pin, int right_pin){
     #ifdef USING_MICROROS
     microros_error = false;
 
-    RCCLASSCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
-    RCCLASSCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
+    //RCCLASSCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
+    //RCCLASSCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
 
-    RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_left_sub, &msg, &dt_left_callback, this, ON_NEW_DATA)); //insane person code
-    RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &msg, &dt_right_callback, this, ON_NEW_DATA));
+    //RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_left_sub, &msg, &Drivetrain::dt_left_callback, this, ON_NEW_DATA)); //insane person code
+    //RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &msg, &Drivetrain::dt_right_callback, this, ON_NEW_DATA));
 
     #endif
 

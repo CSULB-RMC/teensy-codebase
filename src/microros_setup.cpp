@@ -1,12 +1,13 @@
 #include "microros_setup.h"
 #include "config.h"
 
-rcl_node_t node;
+
+
+int setupROS() {
+  rcl_node_t node;
 rclc_executor_t executor;
 rclc_support_t support;
 rcl_allocator_t allocator;
-
-int setupROS() {
   
   printFuncln("Starting microROS");
   set_microros_transports();

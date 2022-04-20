@@ -14,8 +14,8 @@
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printFunc(#fn " Error Code: "); printFuncln(temp_rc);}}
 #define RCCLASSCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printFunc(#fn " Error Code: "); printFuncln(temp_rc); microros_error = true;}}
 
-extern rcl_node_t node;
-extern rclc_executor_t executor;
+//extern rcl_node_t node;
+//extern rclc_executor_t executor;
 
 int setupROS();
 

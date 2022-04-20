@@ -5,7 +5,7 @@
 
 //CONFIG OPTIONS: COMMENT TO DISABLE, UNCOMMENT TO ENABLE
 #define SD_DEBUG //log errors to SD card. Disabled logs errors to Serial3
-#define USING_MICROROS //compile the various classes with support for microros (will fail if microros is not an included library)
+//#define USING_MICROROS //compile the various classes with support for microros (will fail if microros is not an included library)
 
 #ifdef SD_DEBUG
 #define printFunc(text)       SD_log(text)
