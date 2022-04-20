@@ -13,7 +13,7 @@
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printFunc(#fn " Error Code: "); printFuncln(temp_rc); return -1;}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printFunc(#fn " Error Code: "); printFuncln(temp_rc);}}
 #define RCCLASSCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printFunc(#fn " Error Code: "); printFuncln(temp_rc); microros_error = true;}}
-
+#define RCJANK(fn) {rcl_ret_t temp_rc = fn; }
 
 Drivetrain* dt;
 rcl_node_t node;
@@ -39,10 +39,10 @@ void dt_right_callback(const void *msgin) {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);  
+  //digitalWrite(LED_BUILTIN, HIGH);  
 
   #ifdef SD_DEBUG
-  SD_logger_init();
+  //SD_logger_init();
   #else
   Serial3.begin(9600);
   #endif
@@ -85,22 +85,22 @@ void setup() {
   delay(2000);
 
   allocator = rcl_get_default_allocator();
-  printFuncln("Got default allocator");
+  //printFuncln("Got default allocator");
 
   //create init_options
-  RCSOFTCHECK(rclc_support_init(&support, 0, NULL, &allocator));
-  printFuncln("rclc_support_init Success.");
+  RCJANK(rclc_support_init(&support, 0, NULL, &allocator));
+  //printFuncln("rclc_support_init Success.");
 
 
   // create node
-  RCSOFTCHECK(rclc_node_init_default(&node, "micro_ros_arduino_node", "", &support));
-  printFuncln("rclc_node_init_default Success.");
+  RCJANK(rclc_node_init_default(&node, "micro_ros_arduino_node", "", &support));
+  //printFuncln("rclc_node_init_default Success.");
 
   // create executor
-  RCSOFTCHECK(rclc_executor_init(&executor, &support.context, 1, &allocator));
-  printFuncln("rclc_executor_init Success.");
+  RCJANK(rclc_executor_init(&executor, &support.context, 1, &allocator));
+  //printFuncln("rclc_executor_init Success.");
 
-  pinMode(LED_BUILTIN, OUTPUT);
+  //pinMode(LED_BUILTIN, OUTPUT);
   dt = new Drivetrain(8, 9); //TODO: replace these with the actual pins, this is just a test
   //BucketLadder bl(2, 3, 4, 5, 6, 7, 8); //TODO: replace these with the actual pins
   //RegCon rc(9, 10, 11, 12, 13, 14); //TODO: replace with actual pins
@@ -108,15 +108,16 @@ void setup() {
   rcl_subscription_t dt_right_sub;
   rcl_subscription_t testLED_sub;
 
-  std_msgs__msg__Int8 msg;
+  std_msgs__msg__Int8 msg1;
+  std_msgs__msg__Int8 msg2;
 
-  RCSOFTCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
-  RCSOFTCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
-  RCSOFTCHECK(rclc_subscription_init_default(&testLED_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Empty), "test_led"));
+  RCJANK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
+  RCJANK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
+  //RCSOFTCHECK(rclc_subscription_init_default(&testLED_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Empty), "test_led"));
 
-  RCSOFTCHECK(rclc_executor_add_subscription(&executor, &dt_left_sub, &msg, &dt_left_callback, ON_NEW_DATA)); //insane person code
-  RCSOFTCHECK(rclc_executor_add_subscription(&executor, &dt_right_sub, &msg, &dt_right_callback, ON_NEW_DATA));
-  RCSOFTCHECK(rclc_executor_add_subscription(&executor, &testLED_sub, NULL, &test_LED_go, ON_NEW_DATA));
+  RCJANK(rclc_executor_add_subscription(&executor, &dt_left_sub, &msg1, &dt_left_callback, ON_NEW_DATA)); //insane person code
+  RCJANK(rclc_executor_add_subscription(&executor, &dt_right_sub, &msg2, &dt_right_callback, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription(&executor, &testLED_sub, NULL, &test_LED_go, ON_NEW_DATA));
   
 
   //ADD NON MICROROS TEST SETUP CODE HERE
@@ -131,7 +132,7 @@ void loop() {
   #ifdef USING_MICROROS
   RCSOFTCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100)));
   #else
-  RCSOFTCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100)));
+  RCJANK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100)));
   #endif
 }
 
