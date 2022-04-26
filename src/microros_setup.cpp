@@ -9,7 +9,8 @@ rcl_allocator_t allocator;
 int setupROS() {
   
   printFuncln("Starting microROS");
-  set_microros_transports();
+  Serial.begin(115200);
+  set_microros_serial_transports(Serial);
 
   delay(2000);
 

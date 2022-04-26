@@ -20,7 +20,7 @@ void setup() {
     delay(2000);
   }
 
-  Drivetrain dt(0, 1); //TODO: replace these with the actual pins, this is just a test
+  Drivetrain dt(8, 9); //TODO: replace these with the actual pins, this is just a test
   BucketLadder bl(2, 3, 4, 5, 6, 7, 8); //TODO: replace these with the actual pins
   RegCon rc(9, 10, 11, 12, 13, 14); //TODO: replace with actual pins
 
