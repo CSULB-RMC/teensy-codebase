@@ -1,21 +1,10 @@
 #include "drivetrain.h"
 
-Drivetrain::Drivetrain(int left_pin, int right_pin){
+Drivetrain::Drivetrain(int left_pin, int right_pin) : left_motor(), right_motor() {
 
     // Set the objects to the corresponding pins
     left_motor.set_motor_pin(left_pin);
     right_motor.set_motor_pin(right_pin);
-
-    #ifdef USING_MICROROS
-    microros_error = false;
-
-    RCCLASSCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
-    RCCLASSCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
-
-    RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_left_sub, &msg, &dt_left_callback, this, ON_NEW_DATA)); //insane person code
-    RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &msg, &dt_right_callback, this, ON_NEW_DATA));
-
-    #endif
 
 }
 
@@ -66,9 +55,3 @@ void Drivetrain::move_neutral(int speed){
     right_motor.stop();
 
 }
-
-#ifdef USING_MICROROS
-bool Drivetrain::getError() {
-    return microros_error;
-}
-#endif

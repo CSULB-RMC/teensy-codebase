@@ -8,4 +8,6 @@
 #include "bucketLad.h"
 #include "regcon.h"
 
+#include <std_msgs/msg/int8.h>
+
 #endif // LBL_MAIN_H
