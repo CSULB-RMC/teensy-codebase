@@ -2,11 +2,16 @@
 
 #ifdef USING_MICROROS //variables used for setting up microros
 Drivetrain * dt;
+BucketLadder * bl;
+RegCon * rc;
 
 rcl_subscription_t dt_left_sub;
 rcl_subscription_t dt_right_sub;
+rcl_subscription_t rc_sub;
 
 std_msgs__msg__Int8 dt_msg;
+std_msgs__msg__Int8 rc_msg;
+
 #endif
 
 void setup() {
@@ -30,8 +35,8 @@ void setup() {
 
   //lets make the objects
   dt = new Drivetrain(8, 9);
-  //BucketLadder bl(2, 3, 4, 5, 6, 7, 8); //TODO: replace these with the actual pins
-  //RegCon rc(9, 10, 11, 12, 13, 14); //TODO: replace with actual pins
+  bl = new BucketLadder(6, 7, 2, 3, 12, 24, 25);
+  rc = new RegCon(4, 5, 0, 1, 28, 29);
 
   //Drivetrain Micro-ROS stuff
 
@@ -44,6 +49,10 @@ void setup() {
   //Bucketladder Micro-ROS stuff
 
   //Regcon Micro-ROS stuff
+  RCSOFTCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
+
+  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &(RegCon::rc_callback), rc, ON_NEW_DATA));
+
   #endif
 
   #ifndef USING_MICROROS

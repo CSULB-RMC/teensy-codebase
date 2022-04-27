@@ -21,13 +21,6 @@ RegCon::RegCon(int lin_left_pin1, int lin_left_pin2, int lin_right_pin1, int lin
     left_conveyer.set_motor_pin(spark_left_pin); 
     right_conveyer.set_motor_pin(spark_right_pin);
 
-    #ifdef USING_MICROROS
-    microros_error = false;
-
-    RCCLASSCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
-
-    RCCLASSCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &rc_callback, this, ON_NEW_DATA));
-    #endif
 }
 
 #ifdef USING_MICROROS
@@ -89,9 +82,3 @@ void RegCon::conveyor_stop() {
     left_conveyer.stop();
     right_conveyer.stop();
 }
-
-#ifdef USING_MICROROS
-bool RegCon::getError() {
-    return microros_error;
-}
-#endif
