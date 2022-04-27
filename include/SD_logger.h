@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <SD.h>
+#include "config.h"
 
 void SD_logger_init();
 

@@ -42,31 +42,39 @@ void setup() {
   }
 
   //lets make the objects
-  dt = new Drivetrain(8, 9);
+  //dt = new Drivetrain(8, 9);
   bl = new BucketLadder(6, 7, 2, 3, 12, 24, 25);
-  rc = new RegCon(4, 5, 0, 1, 28, 29);
+  //rc = new RegCon(4, 5, 0, 1, 28, 29);
 
   //Drivetrain Micro-ROS stuff
 
-  RCSOFTCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
-  RCSOFTCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
+  //RCSOFTCHECK(rclc_subscription_init_default(&dt_left_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_left"));
+  //RCSOFTCHECK(rclc_subscription_init_default(&dt_right_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dt_right"));
 
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_left_sub, &dt_msg, &(Drivetrain::dt_left_callback), dt, ON_NEW_DATA)); //insane person code
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &dt_msg, &(Drivetrain::dt_right_callback), dt, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_left_sub, &dt_msg, &(Drivetrain::dt_left_callback), dt, ON_NEW_DATA)); //insane person code
+  //RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &dt_msg, &(Drivetrain::dt_right_callback), dt, ON_NEW_DATA));
 
   //Bucketladder Micro-ROS stuff
   RCSOFTCHECK(rclc_subscription_init_default(&bl_lift_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_lifter_control"));
   RCSOFTCHECK(rclc_subscription_init_default(&bl_tele_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_telescope_control"));
-  RCSOFTCHECK(rclc_subscription_init_default(&bl_dig_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_digger_control"));
+  //RCSOFTCHECK(rclc_subscription_init_default(&bl_dig_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_digger_control"));
+
+  //initExecutor();
 
   RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_lift_sub, &bl_lift_msg, &(BucketLadder::bl_lift_callback), bl, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription(&executor, &bl_lift_sub, &bl_lift_msg, &test_LED_go, ON_NEW_DATA));
+  delay(100);
   RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_tele_sub, &bl_tele_msg, &(BucketLadder::bl_tele_callback), bl, ON_NEW_DATA));
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_dig_sub, &bl_dig_msg, &(BucketLadder::bl_dig_callback), bl, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription(&executor, &bl_tele_sub, &bl_tele_msg, &test_LED_stop, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_dig_sub, &bl_dig_msg, &(BucketLadder::bl_dig_callback), bl, ON_NEW_DATA));
 
   //Regcon Micro-ROS stuff
-  RCSOFTCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
+  //RCSOFTCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
 
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &(RegCon::rc_callback), rc, ON_NEW_DATA));
+  //RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &(RegCon::rc_callback), rc, ON_NEW_DATA));
+
+  //dumb test
+  //initExecutor();
 
   #endif
 

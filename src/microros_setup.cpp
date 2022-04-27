@@ -27,8 +27,14 @@ int setupROS() {
   printFuncln("rclc_node_init_default Success.");
 
   // create executor
-  RCCHECK(rclc_executor_init(&executor, &support.context, 1, &allocator));
+  RCCHECK(rclc_executor_init(&executor, &support.context, 2, &allocator));
   printFuncln("rclc_executor_init Success.");
+
+  return 0;
+}
+
+int initExecutor() {
+  RCCHECK(rclc_executor_init(&executor, &support.context, 1, &allocator));
 
   return 0;
 }

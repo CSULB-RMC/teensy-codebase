@@ -19,4 +19,6 @@ extern rclc_executor_t executor;
 
 int setupROS();
 
+int initExecutor();
+
 #endif // LBL_MICROROS_H

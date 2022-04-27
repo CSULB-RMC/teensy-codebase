@@ -10,7 +10,7 @@ enum bl_state_t {
 };
 
 // Constructor
-BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right_Linear_pin1, int right_Linear_pin2, int cim_pin, int bag1_pin, int bag2_pin){
+BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right_Linear_pin1, int right_Linear_pin2, int cim_pin, int bag1_pin, int bag2_pin) : left_linear(), right_linear(), mini_CIM(), bag1(), bag2(){
 
     // Set the pins for the connections
     left_linear.set_breakout_pins(left_Linear_pin1, left_Linear_pin2);
@@ -24,6 +24,7 @@ BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right
 void BucketLadder::bl_lift_callback(const void *msgin, void * context) {
     const std_msgs__msg__Int8 * move_state = (const std_msgs__msg__Int8 *)msgin;
     BucketLadder * bl = (BucketLadder *)context;
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 
     switch(move_state->data) {
         case BL_DOWN_BACKWARD:
