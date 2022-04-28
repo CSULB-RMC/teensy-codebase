@@ -13,7 +13,7 @@ enum rc_state_t {
 
 
 // Set the objects to the corresponding pins
-RegCon::RegCon(int lin_left_pin1, int lin_left_pin2, int lin_right_pin1, int lin_right_pin2, int spark_left_pin, int spark_right_pin) {
+RegCon::RegCon(int lin_left_pin1, int lin_left_pin2, int lin_right_pin1, int lin_right_pin2, int spark_left_pin, int spark_right_pin) : left_conveyer(), right_conveyer(), left_linear(), right_linear() {
     
     // Set the pin connections
     left_linear.set_breakout_pins(lin_left_pin1, lin_left_pin2); 

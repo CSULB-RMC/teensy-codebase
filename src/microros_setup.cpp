@@ -27,7 +27,7 @@ int setupROS() {
   printFuncln("rclc_node_init_default Success.");
 
   // create executor
-  RCCHECK(rclc_executor_init(&executor, &support.context, 2, &allocator));
+  RCCHECK(rclc_executor_init(&executor, &support.context, MICROROS_MAX_SUBSCRIBERS, &allocator));
   printFuncln("rclc_executor_init Success.");
 
   return 0;

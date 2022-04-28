@@ -24,7 +24,6 @@ BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right
 void BucketLadder::bl_lift_callback(const void *msgin, void * context) {
     const std_msgs__msg__Int8 * move_state = (const std_msgs__msg__Int8 *)msgin;
     BucketLadder * bl = (BucketLadder *)context;
-    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 
     switch(move_state->data) {
         case BL_DOWN_BACKWARD:
