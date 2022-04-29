@@ -15,8 +15,7 @@ class BucketLadder{
 
     private:
         // Linear actuator class objects
-        Servo left_linear;
-        Servo right_linear;
+        Servo linears;
 
         // Motor instantiation
         Spark mini_CIM;
@@ -24,7 +23,7 @@ class BucketLadder{
 
     public:
         // Constructor
-        BucketLadder(int=0, int=0, int=0, int=0, int=0);
+        BucketLadder(int linears_pin = 0, int cim_pin = 0, int bag1_pin = 0, int bag2_pin = 0);
 
         // Linear actuator methods
         void linear_up();

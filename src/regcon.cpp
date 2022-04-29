@@ -13,11 +13,10 @@ enum rc_state_t {
 
 
 // Set the objects to the corresponding pins
-RegCon::RegCon(int lin_left_pin, int lin_right_pin, int spark_left_pin, int spark_right_pin) : left_conveyer(), right_conveyer(), left_linear(), right_linear() {
+RegCon::RegCon(int linears_pin, int spark_left_pin, int spark_right_pin) : left_conveyer(), right_conveyer(), linears() {
     
     // Set the pin connections
-    left_linear.attach(lin_left_pin);
-    right_linear.attach(lin_right_pin);
+    linears.attach(linears_pin);
     left_conveyer.set_motor_pin(spark_left_pin); 
     right_conveyer.set_motor_pin(spark_right_pin);
 
@@ -51,20 +50,16 @@ void RegCon::rc_callback(const void* msgin, void * context) {
 // Sets linear actuator inputs based on table in bucket ladder documentation
 void RegCon::linear_up() {
     // Send a command to board to move "forwards" (in-context with board)
-    left_linear.write(180);
-    right_linear.write(180);
+    linears.write(180);
 }
 
 void RegCon::linear_down() {
     // Send a command to board to move "backwards" (in-context with board)
-    left_linear.write(0);
-    right_linear.write(0);
+    linears.write(0);
 }
     
 void RegCon::linear_stop() {
     // Send a command to board to stop (in-context with board)
-    // left_linear.DRV8871_stop();
-    // right_linear.DRV8871_stop();
 }
 
 // Conveyor belt moves forward/backward/stops by calling the equivalent method on both sparks

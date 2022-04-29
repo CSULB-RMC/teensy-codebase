@@ -6,18 +6,17 @@ enum bl_state_t {
     BL_DOWN_BACKWARD, // 0
     BL_UP_FORWARD, // 1
     BL_STOP = 3, // 3
-    BL_TELE_FORWARD,
-    BL_TELE_BACKWARD,
-    BL_TELE_STOP
+    BL_TELE_FORWARD, // 4
+    BL_TELE_BACKWARD, // 5
+    BL_TELE_STOP // 6
     // why did I skip 2...
 };
 
 // Constructor
-BucketLadder::BucketLadder(int left_Linear_pin, int right_Linear_pin, int cim_pin, int bag1_pin, int bag2_pin) : left_linear(), right_linear(), mini_CIM(), bag1(), bag2(){
+BucketLadder::BucketLadder(int linears_pin, int cim_pin, int bag1_pin, int bag2_pin) : linears(), mini_CIM(), bag1(), bag2(){
 
     // Set the pins for the connections
-    left_linear.attach(left_Linear_pin);
-    right_linear.attach(right_Linear_pin);
+    linears.attach(linears_pin);
     mini_CIM.set_motor_pin(cim_pin);
     bag1.set_motor_pin(bag1_pin);
     bag2.set_motor_pin(bag2_pin);
@@ -76,15 +75,13 @@ void BucketLadder::bl_dig_callback(const void *msgin, void * context) {
 // Moves Linear Actuators Up
 void BucketLadder::linear_up(){
 
-    left_linear.write(180);
-    right_linear.write(180);
+    linears.write(180);
 }
 
 // Moves Linear Actuators Down
 void BucketLadder::linear_down(){
 
-    left_linear.write(0);
-    right_linear.write(0);
+    linears.write(0);
 }
 
 // Stops Linear Actuators
@@ -93,8 +90,7 @@ void BucketLadder::linear_stop(){
     // As of now there is no way to stop it due to the fact
     // there is no pot or anything to locate its current position
     
-    // left_linear.write(90);
-    // right_linear.write(90);
+    // linears.write(90);
 }
 
 // Moves Bucketladder in a forward digging motion

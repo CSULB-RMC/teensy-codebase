@@ -18,13 +18,12 @@ class RegCon {
         Spark right_conveyer;
 
         // DRV8871 breakout board objects for linear actuators
-        Servo left_linear;
-        Servo right_linear;
+        Servo linears;
         
     public:
         // Constructor
         // Parameters are for spark pins, not thinking bout liner actuators for now
-        RegCon(int=0, int=0, int=0, int=0); 
+        RegCon(int linears_pin = 0, int spark_left_pin = 0, int spark_right_pin = 0); 
 
         // Linear actuator methods, uses two linear actuators
         void linear_up();
