@@ -12,12 +12,10 @@ rcl_subscription_t rc_sub;
 std_msgs__msg__Int8 dt_msg;
 std_msgs__msg__Int8 rc_msg;
 
-rcl_subscription_t bl_lift_sub;
-rcl_subscription_t bl_tele_sub;
+rcl_subscription_t bl_control_sub;
 rcl_subscription_t bl_dig_sub;
 
-std_msgs__msg__Int8 bl_lift_msg;
-std_msgs__msg__Int8 bl_tele_msg;
+std_msgs__msg__Int8 bl_control_msg;
 std_msgs__msg__Int8 bl_dig_msg;
 
 #endif
@@ -55,18 +53,16 @@ void setup() {
   RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &dt_right_sub, &dt_msg, &(Drivetrain::dt_right_callback), dt, ON_NEW_DATA));
 
   //Bucketladder Micro-ROS stuff
-  RCSOFTCHECK(rclc_subscription_init_default(&bl_lift_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_lifter_control"));
-  RCSOFTCHECK(rclc_subscription_init_default(&bl_tele_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_telescope_control"));
+  RCSOFTCHECK(rclc_subscription_init_default(&bl_control_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_control"));
   RCSOFTCHECK(rclc_subscription_init_default(&bl_dig_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "bucketladder_digger_control"));
 
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_lift_sub, &bl_lift_msg, &(BucketLadder::bl_lift_callback), bl, ON_NEW_DATA));
-  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_tele_sub, &bl_tele_msg, &(BucketLadder::bl_tele_callback), bl, ON_NEW_DATA));
+  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_control_sub, &bl_control_msg, &(BucketLadder::bl_control_callback), bl, ON_NEW_DATA));
   RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &bl_dig_sub, &bl_dig_msg, &(BucketLadder::bl_dig_callback), bl, ON_NEW_DATA));
 
   //Regcon Micro-ROS stuff
-  //RCSOFTCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
+  RCSOFTCHECK(rclc_subscription_init_default(&rc_sub, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int8), "dumper_control"));
 
-  //RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &(RegCon::rc_callback), rc, ON_NEW_DATA));
+  RCSOFTCHECK(rclc_executor_add_subscription_with_context(&executor, &rc_sub, &rc_msg, &(RegCon::rc_callback), rc, ON_NEW_DATA));
 
   #endif
 

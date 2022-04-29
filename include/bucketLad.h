@@ -42,8 +42,7 @@ class BucketLadder{
         void cim_stop();
 
         #ifdef USING_MICROROS
-        static void bl_lift_callback(const void *msgin, void * context);
-        static void bl_tele_callback(const void *msgin, void * context);
+        static void bl_control_callback(const void *msgin, void * context);
         static void bl_dig_callback(const void *msgin, void * context);
         #endif
 };  

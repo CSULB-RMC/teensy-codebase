@@ -5,7 +5,10 @@
 enum bl_state_t {
     BL_DOWN_BACKWARD, // 0
     BL_UP_FORWARD, // 1
-    BL_STOP = 3 // 3
+    BL_STOP = 3, // 3
+    BL_TELE_FORWARD,
+    BL_TELE_BACKWARD,
+    BL_TELE_STOP
     // why did I skip 2...
 };
 
@@ -21,7 +24,7 @@ BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right
 }
 
 #ifdef USING_MICROROS
-void BucketLadder::bl_lift_callback(const void *msgin, void * context) {
+void BucketLadder::bl_control_callback(const void *msgin, void * context) {
     const std_msgs__msg__Int8 * move_state = (const std_msgs__msg__Int8 *)msgin;
     BucketLadder * bl = (BucketLadder *)context;
 
@@ -32,29 +35,25 @@ void BucketLadder::bl_lift_callback(const void *msgin, void * context) {
         case BL_UP_FORWARD:
             bl->linear_up();
             break;
-        case BL_STOP: //fallthrough
-        default:
+        case BL_STOP:
             bl->linear_stop();
             break;
-    }
-}
-void BucketLadder::bl_tele_callback(const void *msgin, void * context) {
-    const std_msgs__msg__Int8 * move_state = (const std_msgs__msg__Int8 *)msgin;
-    BucketLadder * bl = (BucketLadder *)context;
-
-    switch(move_state->data) {
-        case BL_DOWN_BACKWARD:
-            bl->cim_backward();
-            break;
-        case BL_UP_FORWARD:
+        case BL_TELE_FORWARD:
             bl->cim_forward();
             break;
-        case BL_STOP: //fallthrough
+        case BL_TELE_BACKWARD:
+            bl->cim_backward();
+            break;
+        case BL_TELE_STOP:
+            bl->cim_stop();
+            break;
         default:
+            bl->linear_stop();
             bl->cim_stop();
             break;
     }
 }
+
 void BucketLadder::bl_dig_callback(const void *msgin, void * context) {
     const std_msgs__msg__Int8 * move_state = (const std_msgs__msg__Int8 *)msgin;
     BucketLadder * bl = (BucketLadder *)context;
