@@ -75,7 +75,9 @@ void setup() {
 }
 
 void loop() {
-  delay(100);
+  
+  // Wait before reading new values
+  delay(MICRO_ROS_READ_PERIOD);
   #ifdef USING_MICROROS
   RCSOFTCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100)));
   #else

@@ -17,4 +17,10 @@
 #define printFuncln     Serial3.println
 #endif
 
+// Motor speed limit variable 
+#define MAX_MOTOR_PERCENT 0.3
+
+// Read rate delay variable
+#define MICRO_ROS_READ_PERIOD 10
+
 #endif // LBL_CONFIG_H
