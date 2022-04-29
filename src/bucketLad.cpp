@@ -10,11 +10,11 @@ enum bl_state_t {
 };
 
 // Constructor
-BucketLadder::BucketLadder(int left_Linear_pin1, int left_Linear_pin2, int right_Linear_pin1, int right_Linear_pin2, int cim_pin, int bag1_pin, int bag2_pin) : left_linear(), right_linear(), mini_CIM(), bag1(), bag2(){
+BucketLadder::BucketLadder(int left_Linear_pin, int right_Linear_pin, int cim_pin, int bag1_pin, int bag2_pin) : left_linear(), right_linear(), mini_CIM(), bag1(), bag2(){
 
     // Set the pins for the connections
-    left_linear.set_breakout_pins(left_Linear_pin1, left_Linear_pin2);
-    right_linear.set_breakout_pins(right_Linear_pin1, right_Linear_pin2);
+    left_linear.attach(left_Linear_pin);
+    right_linear.attach(right_Linear_pin);
     mini_CIM.set_motor_pin(cim_pin);
     bag1.set_motor_pin(bag1_pin);
     bag2.set_motor_pin(bag2_pin);
@@ -77,22 +77,25 @@ void BucketLadder::bl_dig_callback(const void *msgin, void * context) {
 // Moves Linear Actuators Up
 void BucketLadder::linear_up(){
 
-    left_linear.DRV8871_move(1);
-    right_linear.DRV8871_move(1);
+    left_linear.write(180);
+    right_linear.write(180);
 }
 
 // Moves Linear Actuators Down
 void BucketLadder::linear_down(){
 
-    left_linear.DRV8871_move(0);
-    right_linear.DRV8871_move(0);
+    left_linear.write(0);
+    right_linear.write(0);
 }
 
 // Stops Linear Actuators
 void BucketLadder::linear_stop(){
 
-    left_linear.DRV8871_stop();
-    right_linear.DRV8871_stop();
+    // As of now there is no way to stop it due to the fact
+    // there is no pot or anything to locate its current position
+    
+    // left_linear.write(90);
+    // right_linear.write(90);
 }
 
 // Moves Bucketladder in a forward digging motion
