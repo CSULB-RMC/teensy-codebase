@@ -1,8 +1,7 @@
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
-//#include <Servo.h>
+#include <Servo.h>
 #include "config.h"
-#include "sparkMax.h"
 
 #ifdef USING_MICROROS
 #include "microros_setup.h"
@@ -13,8 +12,8 @@ class Drivetrain{
 
     private:
         // Initialize Servo objects
-        SparkMax left_motor;
-        SparkMax right_motor;
+        Servo left_motor;
+        Servo right_motor;
     
     public:
         // Constructor 
