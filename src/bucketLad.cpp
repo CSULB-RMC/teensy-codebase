@@ -75,13 +75,13 @@ void BucketLadder::bl_dig_callback(const void *msgin, void * context) {
 // Moves Linear Actuators Up
 void BucketLadder::linear_up(){
 
-    linears.write(180);
+    linears.write(BUCK_LIN_UP);
 }
 
 // Moves Linear Actuators Down
 void BucketLadder::linear_down(){
 
-    linears.write(0);
+    linears.write(BUCK_LIN_DOWN);
 }
 
 // Stops Linear Actuators
