@@ -23,4 +23,12 @@
 // Read rate delay variable
 #define MICRO_ROS_READ_PERIOD 10
 
+// Regolith Containment Min and Max Extension
+#define REG_LIN_UP      60
+#define REG_LIN_DOWN    104
+
+// Bucketladder Min and Max extension (TODO)
+#define BUCK_LIN_UP
+#define BUCK_LIN_DOWN
+
 #endif // LBL_CONFIG_H

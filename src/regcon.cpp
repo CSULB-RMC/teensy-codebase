@@ -50,12 +50,12 @@ void RegCon::rc_callback(const void* msgin, void * context) {
 // Sets linear actuator inputs based on table in bucket ladder documentation
 void RegCon::linear_up() {
     // Send a command to board to move "forwards" (in-context with board)
-    linears.write(180);
+    linears.write(REG_LIN_UP);
 }
 
 void RegCon::linear_down() {
     // Send a command to board to move "backwards" (in-context with board)
-    linears.write(0);
+    linears.write(REG_LIN_DOWN);
 }
     
 void RegCon::linear_stop() {
