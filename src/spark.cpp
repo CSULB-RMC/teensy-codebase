@@ -1,4 +1,5 @@
 #include "spark.h"
+#include "config.h"
 
 // Spark (bag motor) constructor
 Spark::Spark(int pin_num){

@@ -18,7 +18,8 @@
 #endif
 
 // Motor speed limit variable 
-#define MAX_MOTOR_PERCENT 0.3
+#define MAX_MOTOR_PERCENT 0.4
+#define BAG_MOTOR_DIFF    10 
 
 // Read rate delay variable
 #define MICRO_ROS_READ_PERIOD 10
@@ -32,5 +33,11 @@
 // Note need to do testing for Bucketladder linears
 #define BUCK_LIN_UP     180
 #define BUCK_LIN_DOWN   0
+
+// Bucketladder BAG motor speed limiting variables
+// Speed constants
+#define FORWARD         180 - BAG_MOTOR_DIFF
+#define BACKWARD        0 - BAG_MOTOR_DIFF
+#define NEUTRAL         90 
 
 #endif // LBL_CONFIG_H

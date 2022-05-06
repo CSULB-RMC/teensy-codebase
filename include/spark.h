@@ -11,11 +11,6 @@ private:
     int spark_pin,
         spark_dir;
 
-    // Speed constants
-    const int FORWARD = 180,
-              BACKWARD = 0,
-              NEUTRAL = 90;
-
     // Built in servo library
     Servo servo;
 
