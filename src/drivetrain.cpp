@@ -8,8 +8,8 @@ Drivetrain::Drivetrain(int left_pin, int right_pin) : left_motor(), right_motor(
     // Set the objects to the corresponding pins
     //left_motor.set_motor_pin(left_pin);
     //right_motor.set_motor_pin(right_pin);
-    left_motor.attach(left_pin);
-    right_motor.attach(right_pin);
+    left_motor.attach(left_pin, 1000, 2000);
+    right_motor.attach(right_pin, 1000, 2000);
 
 }
 
