@@ -15,8 +15,8 @@ private:
     Servo servo;
 
     // Motor methods
-    void spark_forward();
-    void spark_backward();
+    void spark_forward(int);
+    void spark_backward(int);
     void spark_neutral();
 
 public:
@@ -24,7 +24,7 @@ public:
     Spark(int=0);
 
     // Function for moving 
-    void move(int);
+    void move(int, int);
     
     // Method for stopping the motors
     void stop();

@@ -12,19 +12,19 @@ Spark::Spark(int pin_num){
 }
 
 // Goes from 0 to 180, 90 is neutral, 0 is backwards, and 180 is forwards
-void Spark::spark_forward() {
-    spark_dir = FORWARD;
-    servo.write(spark_dir);
+void Spark::spark_forward(int speed) {
+    // spark_dir = FORWARD;
+    servo.write(speed);
 }
 
-void Spark::spark_backward() {
-    spark_dir = BACKWARD;
-    servo.write(spark_dir);
+void Spark::spark_backward(int speed) {
+    // spark_dir = BACKWARD;
+    servo.write(speed);
 }
 
 void Spark::spark_neutral() {
-    spark_dir = NEUTRAL;
-    servo.write(spark_dir);
+    // spark_dir = NEUTRAL;
+    servo.write(90);
 }
 
 // This method attaches the motor pin to the bag motor
@@ -38,17 +38,17 @@ void Spark::set_motor_pin(int pin_num) {
 }
 
 // Backward = 0, Forwards = 1
-void Spark::move(int direction){
+void Spark::move(int direction, int speed){
 
     // If direction is 1...
     if(direction){
 
-        spark_forward();
+        spark_forward(speed);
     }
 
     else{
 
-        spark_backward();
+        spark_backward(speed);
     }
 }
 

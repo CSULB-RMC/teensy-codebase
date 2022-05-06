@@ -97,8 +97,8 @@ void BucketLadder::linear_stop(){
 // Moves Bucketladder in a forward digging motion
 void BucketLadder::bucket_forward(){
 
-    bag1.move(1);
-    bag2.move(0);
+    bag1.move(1, BAG_BUCK_SPEED_FORWARD);
+    bag2.move(0, BAG_BUCK_SPEED_BACKWARD);
 }
 
 // Moves Bucketladder in a backward digging motion
