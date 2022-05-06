@@ -104,8 +104,8 @@ void BucketLadder::bucket_forward(){
 // Moves Bucketladder in a backward digging motion
 void BucketLadder::bucket_backward(){
 
-    bag1.move(0);
-    bag2.move(1);
+    bag1.move(0, BAG_BUCK_SPEED_BACKWARD);
+    bag2.move(1, BAG_BUCK_SPEED_FORWARD);
 }
 
 // Stops Bucketladder from digging
@@ -118,13 +118,13 @@ void BucketLadder::bucket_stop(){
 // Moves Buckketladder horizontally forward
 void BucketLadder::cim_forward(){
 
-    mini_CIM.move(1);
+    mini_CIM.move(1, CIM_WINCH_SPEED_FORWARD);
 }
 
 // Moves Buckketladder horizontally forward
 void BucketLadder::cim_backward(){
     
-    mini_CIM.move(0);
+    mini_CIM.move(0, CIM_WINCH_SPEED_BACKWARD);
 }
 
 // Moves Buckketladder horizontally forward
