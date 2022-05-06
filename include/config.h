@@ -18,7 +18,7 @@
 #endif
 
 // Motor speed limit variable 
-#define MAX_MOTOR_PERCENT 0.4
+#define MAX_MOTOR_PERCENT 1
 
 // Read rate delay variable
 #define MICRO_ROS_READ_PERIOD 10
