@@ -29,8 +29,8 @@
 #define REG_LIN_DOWN    104
 
 // Regolith Containment Sifter
-#define BAG_REG_SPEED_FORWARD
-#define BAG_REG_SPEED_BACKWARD
+#define BAG_REG_SPEED_FORWARD 100
+#define BAG_REG_SPEED_BACKWARD 80
 
 // Bucketladder Min and Max extension
 // Note need to do testing for Bucketladder linears
@@ -39,10 +39,10 @@
 
 // Bucketladder BAG motor speed limiting variables
 
-#define BAG_BUCK_SPEED_FORWARD
-#define BAG_BUCK_SPEED_BACKWARD
+#define BAG_BUCK_SPEED_FORWARD 100
+#define BAG_BUCK_SPEED_BACKWARD 80
 
-#define CIM_WINCH_SPEED_FORWARD
-#define CIM_WINCH_SPEED_BACKWARD
+#define CIM_WINCH_SPEED_FORWARD 100
+#define CIM_WINCH_SPEED_BACKWARD 80
 
 #endif // LBL_CONFIG_H
