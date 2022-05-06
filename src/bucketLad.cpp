@@ -17,6 +17,7 @@ BucketLadder::BucketLadder(int linears_pin, int cim_pin, int bag1_pin, int bag2_
 
     // Set the pins for the connections
     linears.attach(linears_pin);
+    linear_down();
     mini_CIM.set_motor_pin(cim_pin);
     bag1.set_motor_pin(bag1_pin);
     bag2.set_motor_pin(bag2_pin);

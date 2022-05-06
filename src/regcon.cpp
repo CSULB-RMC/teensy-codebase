@@ -17,6 +17,7 @@ RegCon::RegCon(int linears_pin, int spark_left_pin, int spark_right_pin) : left_
     
     // Set the pin connections
     linears.attach(linears_pin);
+    linear_down();
     left_conveyer.set_motor_pin(spark_left_pin); 
     right_conveyer.set_motor_pin(spark_right_pin);
 

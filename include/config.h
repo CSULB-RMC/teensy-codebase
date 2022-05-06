@@ -25,12 +25,12 @@
 
 // Regolith Containment Min and Max Extension
 // Note (UP = 60, Down = 104) during mechanical testing
-#define REG_LIN_UP      0
-#define REG_LIN_DOWN    180
+#define REG_LIN_UP      60
+#define REG_LIN_DOWN    104
 
 // Bucketladder Min and Max extension
 // Note need to do testing for Bucketladder linears
-#define BUCK_LIN_UP     0   
-#define BUCK_LIN_DOWN   180
+#define BUCK_LIN_UP     180
+#define BUCK_LIN_DOWN   0
 
 #endif // LBL_CONFIG_H
