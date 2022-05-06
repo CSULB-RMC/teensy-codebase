@@ -14,17 +14,12 @@ private:
     // Built in servo library
     Servo servo;
 
-    // Motor methods
-    void spark_forward(int);
-    void spark_backward(int);
-    void spark_neutral();
-
 public:
     // Constructor, parameter for pin number
     Spark(int=0);
 
     // Function for moving 
-    void move(int, int);
+    void move(int);
     
     // Method for stopping the motors
     void stop();
