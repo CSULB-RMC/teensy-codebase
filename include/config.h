@@ -17,6 +17,20 @@
 #define printFuncln     Serial3.println
 #endif
 
+// PIN DEFINITIONS
+
+#define PIN_DT_LEFT         8
+#define PIN_DT_RIGHT        9
+
+#define PIN_BL_LINEARS      11
+#define PIN_BL_WINCH        12
+#define PIN_BL_DIG_L        24
+#define PIN_BL_DIG_R        25
+
+#define PIN_RC_LINEARS      10
+#define PIN_RC_CONVEYER_L   28
+#define PIN_RC_CONVEYER_R   29
+
 // Motor speed limit variable 
 #define MAX_MOTOR_PERCENT 1
 

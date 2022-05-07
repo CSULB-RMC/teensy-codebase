@@ -40,9 +40,9 @@ void setup() {
   }
 
   //lets make the objects
-  dt = new Drivetrain(8, 9);
-  bl = new BucketLadder(11, 12, 24, 25);
-  rc = new RegCon(10, 28, 29);
+  dt = new Drivetrain(PIN_DT_LEFT, PIN_DT_RIGHT);
+  bl = new BucketLadder(PIN_BL_LINEARS, PIN_BL_WINCH, PIN_BL_DIG_L, PIN_BL_DIG_R);
+  rc = new RegCon(PIN_RC_LINEARS, PIN_RC_CONVEYER_L, PIN_RC_CONVEYER_R);
 
   //Drivetrain Micro-ROS stuff
 
