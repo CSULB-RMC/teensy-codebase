@@ -41,8 +41,8 @@ void setup() {
 
   //lets make the objects
   dt = new Drivetrain(8, 9);
-  bl = new BucketLadder(36, 12, 24, 25);
-  rc = new RegCon(37, 28, 29);
+  bl = new BucketLadder(11, 12, 24, 25);
+  rc = new RegCon(10, 28, 29);
 
   //Drivetrain Micro-ROS stuff
 
