@@ -65,13 +65,13 @@ void RegCon::linear_stop() {
 
 // Conveyor belt moves forward/backward/stops by calling the equivalent method on both sparks
 void RegCon::conveyor_forward() {
-    left_conveyer.move(BAG_REG_SPEED_FORWARD);
-    right_conveyer.move(BAG_REG_SPEED_BACKWARD);
+    left_conveyer.move(BAG_REG_SPEED_BACKWARD);
+    right_conveyer.move(BAG_REG_SPEED_FORWARD);
 }
 
 void RegCon::conveyor_backward() {
-    left_conveyer.move(BAG_REG_SPEED_BACKWARD);
-    right_conveyer.move(BAG_REG_SPEED_FORWARD);
+    left_conveyer.move(BAG_REG_SPEED_FORWARD);
+    right_conveyer.move(BAG_REG_SPEED_BACKWARD);
 }
 
 void RegCon::conveyor_stop() {

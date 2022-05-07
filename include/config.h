@@ -43,8 +43,8 @@
 #define REG_LIN_DOWN    104
 
 // Regolith Containment Sifter
-#define BAG_REG_SPEED_FORWARD 100
-#define BAG_REG_SPEED_BACKWARD 80
+#define BAG_REG_SPEED_FORWARD 110
+#define BAG_REG_SPEED_BACKWARD 70
 
 // Bucketladder Min and Max extension
 // Note need to do testing for Bucketladder linears
